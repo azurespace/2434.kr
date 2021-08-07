@@ -22,6 +22,10 @@ app.set('view engine', 'pug');
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
+const youtube_id = 0;
+const twitter_id = 1;
+const twitch_id = 2;
+
 map = new Map();
 map.set('nagi', ["https://www.youtube.com/channel/UC5ek2GWKvUKFgnKSHuuCFrw", "https://twitter.com/NagiSo2434", "https://www.twitch.tv/lr7llr7l"]);
 map.set('gaon', ["https://www.youtube.com/channel/UCpRXCTyNNa-MnjhK6gisnRw", "https://twitter.com/Gaon2434", "https://www.twitch.tv/gaon_2434"]);
@@ -47,30 +51,30 @@ map.set('hada', ["https://www.youtube.com/channel/UCLjx3lqIkYkPCBJop8czJ2A", "ht
 for(const [key, value] of map)
 {
   app.use("/"+key+"/youtube", function(req, res, next) {
-    res.redirect(302, value[0]);
+    res.redirect(302, value[youtube_id]);
   })
 
   app.use("/"+key+"/yt", function(req, res, next) {
-    res.redirect(302, value[0]);
+    res.redirect(302, value[youtube_id]);
   })
 
   app.use("/"+key+"/twitter", function(req, res, next) {
-    res.redirect(302, value[1]);
+    res.redirect(302, value[twitter_id]);
   })
   app.use("/"+key+"/twt", function(req, res, next) {
-    res.redirect(302, value[1]);
+    res.redirect(302, value[twitter_id]);
   })
 
   app.use("/"+key+"/twitch", function(req, res, next) {
-    res.redirect(302, value[2]);
+    res.redirect(302, value[twitch_id]);
   })
 
   app.use("/"+key+"/t", function(req, res, next) {
-    res.redirect(302, value[2]);
+    res.redirect(302, value[twitch_id]);
   })
 
   app.use("/"+key, function(req, res, next) {
-    res.redirect(302, value[0]);
+    res.redirect(302, value[twitch_id]);
   })
 }
 
