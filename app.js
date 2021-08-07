@@ -39,38 +39,44 @@ map.set('hari', ["https://www.youtube.com/channel/UClS6k3w1sPwlVFqK3-yID5A", "ht
 map.set('mia', ["https://www.youtube.com/channel/UCyqzU2nq7eGNi4kN0uHx7TA", "https://twitter.com/SongMia2434", "https://www.twitch.tv/songmia2434"]);
 map.set('seffyna', ["https://www.youtube.com/channel/UCeGendL8CO5RkffB6IFwHow", "https://twitter.com/Seffyna2434", "https://www.twitch.tv/seffyna2434"]);
 map.set('fyna', ["https://www.youtube.com/channel/UCeGendL8CO5RkffB6IFwHow", "https://twitter.com/Seffyna2434", "https://www.twitch.tv/seffyna2434"]);
+map.set('fina', ["https://www.youtube.com/channel/UCeGendL8CO5RkffB6IFwHow", "https://twitter.com/Seffyna2434", "https://www.twitch.tv/seffyna2434"]);
+map.set('pina', ["https://www.youtube.com/channel/UCeGendL8CO5RkffB6IFwHow", "https://twitter.com/Seffyna2434", "https://www.twitch.tv/seffyna2434"]);
 map.set('ffyna', ["https://www.youtube.com/channel/UCeGendL8CO5RkffB6IFwHow", "https://twitter.com/Seffyna2434", "https://www.twitch.tv/seffyna2434"]);
 map.set('hada', ["https://www.youtube.com/channel/UCLjx3lqIkYkPCBJop8czJ2A", "https://twitter.com/BanHada2434", "https://www.twitch.tv/banhada2434"])
 
 for(const [key, value] of map)
 {
   app.use("/"+key+"/youtube", function(req, res, next) {
-    res.redirect(301, value[0]);
+    res.redirect(302, value[0]);
   })
 
   app.use("/"+key+"/yt", function(req, res, next) {
-    res.redirect(301, value[0]);
+    res.redirect(302, value[0]);
   })
 
   app.use("/"+key+"/twitter", function(req, res, next) {
-    res.redirect(301, value[1]);
+    res.redirect(302, value[1]);
   })
   app.use("/"+key+"/twt", function(req, res, next) {
-    res.redirect(301, value[1]);
+    res.redirect(302, value[1]);
   })
 
   app.use("/"+key+"/twitch", function(req, res, next) {
-    res.redirect(301, value[2]);
+    res.redirect(302, value[2]);
   })
 
   app.use("/"+key+"/t", function(req, res, next) {
-    res.redirect(301, value[2]);
+    res.redirect(302, value[2]);
   })
 
   app.use("/"+key, function(req, res, next) {
     res.redirect(302, value[0]);
   })
 }
+
+app.use("/", function(req,res,next){
+  res.redirect(302, "https://www.youtube.com/channel/UC5ek2GWKvUKFgnKSHuuCFrw")
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
