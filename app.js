@@ -44,8 +44,8 @@ map.set('hada', ["https://www.youtube.com/channel/UCLjx3lqIkYkPCBJop8czJ2A", "ht
 
 
 for (const [key, value] of map) {
-    for (const name in ["/youtube", "/yt"]) {
-        if (value[youtube_id] != "") {
+    for (const name of ["/", "/youtube", "/yt"]) {
+        if (value[youtube_id] !== "") {
             app.use("/" + key + name, function (req, res, next) {
                     res.redirect(302, value[youtube_id]);
                 }
@@ -53,8 +53,8 @@ for (const [key, value] of map) {
         }
     }
 
-    for (const name in ["/twt", "/twitter"]) {
-        if (value[twitter_id] != "") {
+    for (const name of ["/twt", "/twitter"]) {
+        if (value[twitter_id] !== "") {
             app.use("/" + key + name, function (req, res, next) {
                     res.redirect(302, value[twitter_id]);
                 }
@@ -63,8 +63,8 @@ for (const [key, value] of map) {
     }
 
 
-    for (const name in ["/t", "/twitch"]) {
-        if (value[twitch_id] != "") {
+    for (const name of ["/t", "/twitch"]) {
+        if (value[twitch_id] !== "") {
             app.use("/" + key + name, function (req, res, next) {
                     res.redirect(302, value[twitch_id]);
                 }
@@ -72,8 +72,8 @@ for (const [key, value] of map) {
         }
     }
 
-    for (const name in ["/cas", "/cast", "/twitcasting"]) {
-        if (value[twitcasting_id] != "") {
+    for (const name of ["/cas", "/cast", "/twitcasting"]) {
+        if (value[twitcasting_id] !== "") {
             app.use("/" + key + name, function (req, res, next) {
                     res.redirect(302, value[twitcasting_id]);
                 }
