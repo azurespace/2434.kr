@@ -44,7 +44,7 @@ map.set('hada', ["https://www.youtube.com/channel/UCLjx3lqIkYkPCBJop8czJ2A", "ht
 
 
 for (const [key, value] of map) {
-    for (const name of ["/", "/youtube", "/yt"]) {
+    for (const name of ["/youtube", "/yt"]) {
         if (value[youtube_id] !== "") {
             app.use("/" + key + name, function (req, res, next) {
                     res.redirect(302, value[youtube_id]);
@@ -80,8 +80,15 @@ for (const [key, value] of map) {
             );
         }
     }
-}
 
+    if (value[youtube_id] !== "") {
+        app.use("/", function (req, res, next) {
+                res.redirect(302, value[youtube_id]);
+            }
+        );
+    }
+
+}
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
