@@ -70,7 +70,7 @@ for (const [key, value] of map) {
                 }
             );
         }
-    }
+    }d
 
     for (const name of ["/cas", "/cast", "/twitcasting"]) {
         if (value[twitcasting_id] !== "") {
@@ -82,7 +82,7 @@ for (const [key, value] of map) {
     }
 
     if (value[youtube_id] !== "") {
-        app.use("/", function (req, res, next) {
+        app.use("/" + key, function (req, res, next) {
                 res.redirect(302, value[youtube_id]);
             }
         );
