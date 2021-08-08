@@ -12,23 +12,31 @@ var debug = require('debug')('untitled:server');
 var http = require('http');
 
 
-# configuration
+
 var options = {
-    key: fs.readFileSync('./ssl/privatekey.pem'),
-    cert: fs.readFileSync('./ssl/certificate.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/2434.kr/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/2434.kr/fullchain.pem'),
 };
 
-port = ""
-port_secure = ""
+port = "80"
+port_secure = "443"
 
-var server = http.createServer(app);
+// Redirect from http port to https
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'].replace(port, port_secure) + req.url });
+    console.log("http request, will go to >> ");
+    console.log("https://" + req.headers['host'].replace(port, port_secure) + req.url );
+    res.end();
+}).listen(port);
+
+//var server = http.createServer(app);
 var ssl_server = https.createServer(options, app)
 
 
-server.listen(port);
+//server.listen(port);
 ssl_server.listen(port_secure);
 
-registerHandler(server);
+//registerHandler(server);
 registerHandler(ssl_server);
 
 function registerHandler(server) {

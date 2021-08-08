@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 
 var app = express();
-
+app.enable('trust proxy');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -14,6 +14,10 @@ app.get('/', function(req, res) {
 const youtube_id = 0;
 const twitter_id = 1;
 const twitch_id = 2;
+
+app.all((req, res, next) => {
+    req.secure ? next() : res.redirect('https://' + req.headers.host + req.url)
+})
 
 map = new Map();
 map.set('nagi', ["https://www.youtube.com/channel/UC5ek2GWKvUKFgnKSHuuCFrw", "https://twitter.com/NagiSo2434", "https://www.twitch.tv/lr7llr7l"]);
