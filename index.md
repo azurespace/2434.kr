@@ -9,7 +9,7 @@ This website is unofficial. <br/>
 ## 사용 방법(How to use)(使い方)
 ### URL 구조(URL Structure)(URL構造）
 ```
-[http://2434.kr/](http://2434.kr/{버츄얼)[Name]/[Service]
+http://2434.kr/[Name]/[Service]
 ```
 #### [Name]
 니지산지 소속 라이버의 이름을 영문자로 입력(대소문자 구분 X)  <br/> 
